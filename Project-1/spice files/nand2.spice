@@ -1,0 +1,28 @@
+* SPICE3 file created from nand2.ext - technology: scmos
+
+.option scale=0.12u
+.include ./tsmc025.lib
+
+Vdd VDD 0 2.5
+VinA A 0 PULSE(0, 2.5, 0ns, 1ns, 1ns, 10ns, 20ns)
+VinB B 0 PULSE(0.01, 2.49, 0ns, 1ns, 1ns, 5ns, 20ns)
+CL Y 0 1fF
+.TRAN 1ns 100ns
+
+M1000 Y A VDD Vdd pfet w=20 l=2
++  ad=120 pd=52 as=200 ps=100
+M1001 a_n3_n41# A GND Gnd nfet w=10 l=2
++  ad=60 pd=32 as=50 ps=30
+M1002 Y B a_n3_n41# Gnd nfet w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+M1003 VDD B Y Vdd pfet w=20 l=2
++  ad=0 pd=0 as=0 ps=0
+C0 VDD Y 0.51fF
+C1 A B 0.25fF
+C2 Y GND 0.05fF
+C3 Y B 0.02fF
+C4 GND Gnd 0.18fF
+C5 Y Gnd 0.32fF
+C6 B Gnd 0.59fF
+C7 A Gnd 0.59fF
+C8 VDD Gnd 0.25fF

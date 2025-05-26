@@ -1,0 +1,28 @@
+* SPICE3 file created from nor2.ext - technology: scmos
+
+.option scale=0.12u
+.include ./tsmc025.lib
+
+Vdd VDD 0 2.5
+VinA A 0 PULSE(0, 2.5, 0ns, 1ns, 1ns, 10ns, 20ns)
+VinB B 0 PULSE(0.01, 2.49, 0ns, 1ns, 1ns, 5ns,  20ns)
+CL Y 0 1fF
+.TRAN 1ns 100ns
+
+M1000 a_n3_21# A VDD Vdd pfet w=20 l=2
++  ad=120 pd=52 as=100 ps=50
+M1001 Y A GND Gnd nfet w=10 l=2
++  ad=60 pd=32 as=100 ps=60
+M1002 GND B Y Gnd nfet w=10 l=2
++  ad=0 pd=0 as=0 ps=0
+M1003 Y B a_n3_21# Vdd pfet w=20 l=2
++  ad=100 pd=50 as=0 ps=0
+C0 GND Y 0.28fF
+C1 VDD Y 0.05fF
+C2 A B 0.25fF
+C3 Y B 0.02fF
+C4 GND Gnd 0.22fF
+C5 Y Gnd 0.35fF
+C6 B Gnd 0.59fF
+C7 A Gnd 0.59fF
+C8 VDD Gnd 0.20fF
